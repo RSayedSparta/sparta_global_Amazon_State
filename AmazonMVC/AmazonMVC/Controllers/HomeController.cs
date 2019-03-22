@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace AmazonMVC.Controllers
 {
-    //[AuthenticationFilter]
+    [AuthenticationFilter]
     public class HomeController : Controller
     {
 
@@ -14,7 +14,7 @@ namespace AmazonMVC.Controllers
         {
             if (Session["FirstName"] == null || Session == null)
             {
-                return RedirectToAction("Create", "Register");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -22,7 +22,7 @@ namespace AmazonMVC.Controllers
                 Session.Abandon();
 
             }
-            return RedirectToAction("Index", "Register");
+            return RedirectToAction("Create", "Register");
         }
 
 

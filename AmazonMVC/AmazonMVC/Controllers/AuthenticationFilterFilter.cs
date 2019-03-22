@@ -20,9 +20,9 @@ namespace AmazonMVC.Controllers
 
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
-            var user = filterContext.HttpContext.User;
+            var user = filterContext.HttpContext.Session;
 
-            if (user == null || !user.Identity.IsAuthenticated)
+            if (user == null)
             {
                 filterContext.Result = new HttpUnauthorizedResult("Please enter the correct login");
             }
