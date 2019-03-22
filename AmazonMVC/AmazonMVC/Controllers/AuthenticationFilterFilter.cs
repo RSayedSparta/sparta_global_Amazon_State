@@ -20,11 +20,13 @@ namespace AmazonMVC.Controllers
 
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
-            var user = filterContext.HttpContext.Session;
-
-            if (user == null)
+            HttpSessionStateBase session = filterContext.HttpContext.Session;
+            if (session != null && session["UserInfo"] == null)
             {
-                filterContext.Result = new HttpUnauthorizedResult("Please enter the correct login");
+                filterContext.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary {
+                                { "Create", "Register" },
+                                });
             }
         }
     }

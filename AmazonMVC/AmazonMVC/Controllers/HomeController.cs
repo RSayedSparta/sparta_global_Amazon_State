@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace AmazonMVC.Controllers
 {
-    [AuthenticationFilter]
+    
     public class HomeController : Controller
     {
 
@@ -25,19 +25,19 @@ namespace AmazonMVC.Controllers
             return RedirectToAction("Create", "Register");
         }
 
-
+        [AuthenticationFilter]
         public ActionResult Index()
         {
             return View();
         }
-
+        [AuthenticationFilter]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        [AuthenticationFilter]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
